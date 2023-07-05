@@ -5,7 +5,7 @@
         string message;
         public InvalidPrimaryID()
         {
-            message = "Primary ID should be Empty";
+            message = "primary id must be Empty";
         }
         public InvalidPrimaryID(string message)
         {

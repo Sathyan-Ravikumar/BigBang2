@@ -11,7 +11,8 @@ using AngularWithAPI.Models.DTO;
 using Microsoft.AspNetCore.Cors;
 using AngularWithAPI.Repository.Authorization.Userloginregister;
 using AngularWithAPI.Exceptions;
- 
+using Microsoft.AspNetCore.Authorization;
+
 namespace AngularWithAPI.Controllers
 {
     [Route("api/[controller]/[action]")]
@@ -64,6 +65,7 @@ namespace AngularWithAPI.Controllers
         [ProducesResponseType(typeof(RegisterationDTO), StatusCodes.Status200OK)]//Success Response
         [ProducesResponseType(StatusCodes.Status404NotFound)]//Failure Response
         [HttpPost("deleteDoctorinlist")]
+        
         public async Task<ActionResult<RegisterationDTO?>> deletedoctorinlist(RegisterationDTO userRegisterDTO)
         {
 
@@ -148,5 +150,7 @@ namespace AngularWithAPI.Controllers
                 return BadRequest(new Error(4, ex.Message));
             }
         }
+
+       
     }
 }

@@ -1,4 +1,5 @@
-﻿using AngularWithAPI.Models.DTO;
+﻿using AngularWithAPI.Models;
+using AngularWithAPI.Models.DTO;
 
 namespace AngularWithAPI.Repository.Authorization.Userloginregister
 {
@@ -13,5 +14,6 @@ namespace AngularWithAPI.Repository.Authorization.Userloginregister
 
         Task<List<RegisterationDTO>> View_All_doctorRequest(DoctorDetailsDTO doctorDTO);
         Task<RegisterationDTO?> deletedoctorinlist(RegisterationDTO userRegisterDTO);
+       
     }
 }

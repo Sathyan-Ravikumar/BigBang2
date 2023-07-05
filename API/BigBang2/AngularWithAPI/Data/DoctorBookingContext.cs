@@ -24,7 +24,7 @@ public partial class DoctorBookingContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("data source = .\\SQLEXPRESS; initial catalog = DoctorBooking; integrated security=SSPI;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("data source=.\\SQLEXPRESS;Database=DoctorBooking;integrated security=SSPI;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -35,8 +35,9 @@ public partial class DoctorBookingContext : DbContext
             entity.ToTable("Appointment");
 
             entity.Property(e => e.Appid).HasColumnName("appid");
-            entity.Property(e => e.AppoitmentTime).HasColumnName("appoitment_time");
-            entity.Property(e => e.DoctorName).HasColumnName("Doctor_name");
+            entity.Property(e => e.AppoitmentTime)
+                .HasMaxLength(20)
+                .HasColumnName("appoitment_time");
             entity.Property(e => e.PatientAddress).HasColumnName("patient_address");
             entity.Property(e => e.PatientAge).HasColumnName("patient_age");
             entity.Property(e => e.PatientGender)
@@ -46,9 +47,7 @@ public partial class DoctorBookingContext : DbContext
             entity.Property(e => e.PatientNumber).HasColumnName("patient_number");
             entity.Property(e => e.SpecializationPatientNeed).HasColumnName("specialization_patient_need");
             entity.Property(e => e.Userid).HasColumnName("userid");
-            entity.Property(e => e.VisitingDate)
-                .HasColumnType("date")
-                .HasColumnName("visiting_Date");
+            entity.Property(e => e.VisitingDate).HasColumnName("visiting_Date");
 
             entity.HasOne(d => d.Doctor).WithMany(p => p.Appointments)
                 .HasForeignKey(d => d.Doctorid)
@@ -85,7 +84,6 @@ public partial class DoctorBookingContext : DbContext
             entity.Property(e => e.Userid).HasColumnName("userid");
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.Hashkey).HasColumnName("hashkey");
-            entity.Property(e => e.Role).HasMaxLength(20);
             entity.Property(e => e.Username).HasMaxLength(30);
         });
 

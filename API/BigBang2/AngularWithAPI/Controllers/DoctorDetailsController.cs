@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AngularWithAPI.Data;
 using AngularWithAPI.Models;
+using AngularWithAPI.Repository.Tables.DoctorDetailsTable;
 
 namespace AngularWithAPI.Controllers
 {
@@ -14,9 +15,9 @@ namespace AngularWithAPI.Controllers
     [ApiController]
     public class DoctorDetailsController : ControllerBase
     {
-        private readonly DoctorBookingContext _context;
+        private readonly IDoctorDetails _context;
 
-        public DoctorDetailsController(DoctorBookingContext context)
+        public DoctorDetailsController(IDoctorDetails context)
         {
             _context = context;
         }
@@ -25,100 +26,79 @@ namespace AngularWithAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DoctorDetail>>> GetDoctorDetails()
         {
-          if (_context.DoctorDetails == null)
-          {
-              return NotFound();
-          }
-            return await _context.DoctorDetails.ToListAsync();
+            try
+            {
+                return Ok(await _context.GetDoctorDetails());
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         // GET: api/DoctorDetails/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<DoctorDetail>> GetDoctorDetail(int id)
+        [HttpGet("doctorname")]
+        public async Task<ActionResult<DoctorDetail>> GetDoctorDetail(string doctorName)
         {
-          if (_context.DoctorDetails == null)
-          {
-              return NotFound();
-          }
-            var doctorDetail = await _context.DoctorDetails.FindAsync(id);
-
-            if (doctorDetail == null)
+            try
             {
-                return NotFound();
+                return Ok(await _context.GetDoctorDetail(doctorName));
             }
-
-            return doctorDetail;
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         // PUT: api/DoctorDetails/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDoctorDetail(int id, DoctorDetail doctorDetail)
+        [HttpPut("doctorname")]
+        public async Task<ActionResult<List<DoctorDetail>>> PutDoctorDetail(int doctorid, DoctorDetail doctorDetail)
         {
-            if (id != doctorDetail.Doctorid)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(doctorDetail).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                return Ok(await _context.PutDoctorDetail(doctorid, doctorDetail));
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!DoctorDetailExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NotFound(ex.Message);
             }
 
-            return NoContent();
         }
 
         // POST: api/DoctorDetails
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<DoctorDetail>> PostDoctorDetail(DoctorDetail doctorDetail)
+        public async Task<ActionResult<List<DoctorDetail>>> PostDoctorDetail(DoctorDetail doctorDetail)
         {
-          if (_context.DoctorDetails == null)
-          {
-              return Problem("Entity set 'DoctorBookingContext.DoctorDetails'  is null.");
-          }
-            _context.DoctorDetails.Add(doctorDetail);
-            await _context.SaveChangesAsync();
+            try
+            {
+                return Ok(await _context.PostDoctorDetail(doctorDetail));
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
 
-            return CreatedAtAction("GetDoctorDetail", new { id = doctorDetail.Doctorid }, doctorDetail);
+
         }
 
         // DELETE: api/DoctorDetails/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDoctorDetail(int id)
+        public async Task<ActionResult<List<DoctorDetail>>> DeleteDoctorDetail(int id)
         {
-            if (_context.DoctorDetails == null)
+            try
             {
-                return NotFound();
+                return Ok(await _context.DeleteDoctorDetail(id));
             }
-            var doctorDetail = await _context.DoctorDetails.FindAsync(id);
-            if (doctorDetail == null)
+            catch (Exception ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
             }
-
-            _context.DoctorDetails.Remove(doctorDetail);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
         }
 
-        private bool DoctorDetailExists(int id)
-        {
-            return (_context.DoctorDetails?.Any(e => e.Doctorid == id)).GetValueOrDefault();
-        }
+       
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,117 +9,80 @@ using Microsoft.EntityFrameworkCore;
 using AngularWithAPI.Data;
 using AngularWithAPI.Models;
 
+using AngularWithAPI.Repository.Tables.DoctorDetailsTable;
+using AngularWithAPI.Repository.Tables.AppointmentTable;
+
 namespace AngularWithAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class AppointmentsController : ControllerBase
     {
-        private readonly DoctorBookingContext _context;
+        private readonly IAppointment _context;
 
-        public AppointmentsController(DoctorBookingContext context)
+        public AppointmentsController(IAppointment context)
         {
             _context = context;
         }
 
         // GET: api/Appointments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointments()
+        public async Task<ActionResult<List<Appointment>>> GetAppointments()
         {
-          if (_context.Appointments == null)
-          {
-              return NotFound();
-          }
-            return await _context.Appointments.ToListAsync();
+            try
+            {
+                return Ok(await _context.GetAppointments());
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         // GET: api/Appointments/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Appointment>> GetAppointment(int id)
         {
-          if (_context.Appointments == null)
-          {
-              return NotFound();
-          }
-            var appointment = await _context.Appointments.FindAsync(id);
-
-            if (appointment == null)
-            {
-                return NotFound();
-            }
-
-            return appointment;
-        }
-
-        // PUT: api/Appointments/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAppointment(int id, Appointment appointment)
-        {
-            if (id != appointment.Appid)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(appointment).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                return Ok(await _context.GetAppointment(id));
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!AppointmentExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NotFound(ex.Message);
             }
-
-            return NoContent();
         }
 
         // POST: api/Appointments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Appointment>> PostAppointment(Appointment appointment)
+        public async Task<ActionResult<List<Appointment>>> PostAppointment(Appointment appointment)
         {
-          if (_context.Appointments == null)
-          {
-              return Problem("Entity set 'DoctorBookingContext.Appointments'  is null.");
-          }
-            _context.Appointments.Add(appointment);
-            await _context.SaveChangesAsync();
+            try
 
-            return CreatedAtAction("GetAppointment", new { id = appointment.Appid }, appointment);
-        }
-
-        // DELETE: api/Appointments/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAppointment(int id)
-        {
-            if (_context.Appointments == null)
             {
-                return NotFound();
+                return Ok(await _context.PostAppointment(appointment));
             }
-            var appointment = await _context.Appointments.FindAsync(id);
-            if (appointment == null)
+            catch(Exception ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
             }
-
-            _context.Appointments.Remove(appointment);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
         }
 
-        private bool AppointmentExists(int id)
+        [HttpGet("Get_Appointment_Details_For_Particular_Doctor")]
+        public async Task<ActionResult<List<Appointment>>> GetDoctorDetails(int doctorid)
         {
-            return (_context.Appointments?.Any(e => e.Appid == id)).GetValueOrDefault();
+            try
+
+            {
+                return Ok(await _context.GetDoctorDetails(doctorid));
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
+
+      
     }
 }

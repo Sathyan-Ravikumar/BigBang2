@@ -11,11 +11,11 @@ public partial class User
 
     public string Email { get; set; } = null!;
 
-    public string Role { get; set; } = null!;
-
-    public byte[] Password { get; set; } = null!;
+    public string? Role { get; set; }
 
     public byte[]? Hashkey { get; set; }
+
+    public byte[]? Password { get; set; }
 
     public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 

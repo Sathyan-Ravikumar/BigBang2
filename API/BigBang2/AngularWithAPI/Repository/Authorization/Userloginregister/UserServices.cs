@@ -1,7 +1,9 @@
-﻿using AngularWithAPI.Models;
+﻿using AngularWithAPI.Data;
+using AngularWithAPI.Models;
 using AngularWithAPI.Models.DTO;
 using AngularWithAPI.Repository.Authorization.Token;
 using AngularWithAPI.Repository.Authorization.Userfolder;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -11,6 +13,7 @@ namespace AngularWithAPI.Repository.Authorization.Userloginregister
     {
         private readonly IUser _userRepo;
         private readonly IToken _tokenService;
+    
         private static List<RegisterationDTO> doctorList = new List<RegisterationDTO>();
 
 
@@ -18,8 +21,10 @@ namespace AngularWithAPI.Repository.Authorization.Userloginregister
         {
             _userRepo = userRepo;
             _tokenService = tokenService;
+          
 
         }
+        
         public async Task<UserDTO> LogIN(UserDTO userDTO)
         {
             UserDTO user = null;
@@ -34,6 +39,7 @@ namespace AngularWithAPI.Repository.Authorization.Userloginregister
                         return null;
                 }
                 user = new UserDTO();
+                user.userid = userData.Userid;
                 user.UserName = userData.Username;
                 user.Role = userData.Role;
                 user.Token = _tokenService.GenerateToken(user);
@@ -106,6 +112,7 @@ namespace AngularWithAPI.Repository.Authorization.Userloginregister
                 doctorList.Remove(userToDelete);
                 return userRegisterDTO;
             }
+
             return null;
         }
 
@@ -181,6 +188,8 @@ namespace AngularWithAPI.Repository.Authorization.Userloginregister
             }
             return false;
         }
+        
+
     }
 }
 

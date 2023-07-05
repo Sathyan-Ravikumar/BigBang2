@@ -6,7 +6,7 @@
         string message;
         public InvalidSqlException()
         {
-            message = "SQL Exception";
+            message = "SQL Exeception";
         }
         public InvalidSqlException(string message)
         {

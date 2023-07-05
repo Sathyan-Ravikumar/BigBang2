@@ -21,13 +21,11 @@ public partial class Appointment
 
     public long? PatientNumber { get; set; }
 
-    public string? DoctorName { get; set; }
-
     public string? SpecializationPatientNeed { get; set; }
 
-    public DateTime? VisitingDate { get; set; }
+    public string? VisitingDate { get; set; }
 
-    public TimeSpan? AppoitmentTime { get; set; }
+    public string? AppoitmentTime { get; set; }
 
     public virtual DoctorDetail? Doctor { get; set; }
 
