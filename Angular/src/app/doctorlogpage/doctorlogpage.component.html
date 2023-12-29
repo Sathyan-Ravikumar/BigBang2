@@ -1,0 +1,125 @@
+<head><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
+
+        
+          <div class="col-lg-4 mb-4 wholecard">
+      <div class="card content1">
+          <img class="card-img-top" src="../../assets/{{docid.doctorName}}.jpg" alt="Card image">
+          <div class="card-body">
+            <p class="card-text"><span>Name : </span>{{docid.doctorName}}</p>
+            <p class="card-text"><span>Specialization : </span>{{docid.specialization}}</p>
+            <p class="card-text"><span>Experience in Years :</span>{{docid.experience}}</p>
+            <p class="card-text"><span>Email: </span>{{docid.email}}</p>
+            <p class="card-text"><span>Contact Number: </span>{{docid.contactNumber}}</p>
+            <!-- <button class="buttons" (click)="openPopup1()">Update</button> -->
+          </div>
+        </div>
+        </div>
+      
+<h2 class="tag">Appointment Details for you</h2>
+ <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Address</th>
+            <th scope="col">Specialization</th>
+            <th scope="col">Appointemnt Date</th>
+            <th scope="col">Appointemnt Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let a of appointment">
+            <td>{{a.patientName}}</td>
+            <td>{{a.patientAge}}</td>
+            <td>{{a.patientGender}}</td>
+            <td>{{a.patientAddress}}</td>
+                <td>{{a.specializationPatientNeed}}</td>
+                <td>{{a.visitingDate}}</td>
+                <td>{{a.appoitmentTime}}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+
+
+    <div class="buttons">
+        <button (click)="openPopup()" [disabled]="isButtonDisabled">Add</button>
+        
+        </div>
+        <div class="dialog-box" id="popup">
+            <i class="fa-solid fa-xmark fa-lg" (click)="closePopup()"></i>
+            <div class="form-wrapper">
+              <div class="form-container">
+                <h2>ADD YOUR DETAILS</h2>
+                <form [formGroup]="AddDoc">
+                    <label for="name">Your Specialization</label>
+                    <input type="text" id="name" name="Your Specialization" placeholder="Your specialization" formControlName="specialization" required />
+                
+                    <label for="name">Your Experience in Years</label>
+                    <input
+                      type="text" id="name"  name="experience" placeholder="Experience" formControlName="experience" required />
+                
+                    <label for="phone">Gender</label>
+                    <input
+                      type="text"  id="price"  name="Gender" placeholder="Gender" formControlName="gender" required />
+                    
+                    <label for="name">valid Email</label>
+                    <input type="text" id="name" name="Email"  placeholder="Enter Your Email" formControlName="email" required />
+                    
+                    
+                      <label for="phone">your Contact Number</label>
+                    <input type="text" id="name"  name="contactNumber" placeholder="Enter Your Contact Number" formControlName="contactNumber"  required />
+                    <button type="submit" value="Submit"  (click)="postdoc()" >ADD YOUR DATA</button>
+                    </form>
+              </div>
+            </div>
+          </div>
+        
+        
+        
+        
+          
+        <div class="dialog-box1" id="popup1" >
+            <i class="fa-solid fa-xmark fa-lg" (click)="closePopup1()"></i>
+            <div class="form-wrapper">
+              <div class="form-container">
+                <h2>UPDATE YOUR DETAILS</h2>
+                <form>
+                    <label for="id">Experience</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="Experience"
+                      formControlName="experience"
+                     placeholder="Enter Your Experience in Years"
+                      required
+                    />
+                    <label for="Cost">Email ID</label>
+                    <input
+                    type="text"
+                      id="cost"
+                      name="Email"
+                      formControlName="email"
+                     placeholder="Enter Your New Email "
+                      required
+                    />
+                    <label for="perday">Contact Number:</label>
+                    <input
+                      type="number"
+                      id="perDay"
+                      name="contactnumber"
+                      formControlName="contactNumber"
+                     placeholder="Enter Your New Contact Number"
+                      required
+                    />
+                    <button>Update</button>
+                  </form>
+              </div>
+            </div>
+          </div> 

@@ -1,0 +1,61 @@
+<div class="title">
+  <h1>These are the Doctor Details Which are in Request to login</h1>
+</div>
+<div class="buttons">
+<button class="btn btn-primary button1" (click)="sendRequest()">View Doctor Request</button>
+
+</div>
+
+
+
+<div class="row bg">
+    <ng-container *ngFor="let m of doctor">
+        <div class="col-lg-4 mb-4">
+    <div class="card content1">
+        <img class="card-img-top" src="../../assets/{{m.username}}.jpg" alt="Card image">
+        <div class="card-body">
+          <p class="card-text"><span>Name : </span>{{m.username}}</p>
+          <p class="card-text"><span>Email :</span>{{m.email}}</p>
+          <p class="card-text"><span>Role: </span>{{m.role}}</p>
+          <button (click)="addRow(m)" class="btn cardbutton1">Add</button>
+          <button (click)="deleteRow(m)" class="btn cardbutton2">Delete</button>
+        </div>
+      </div>
+      </div>
+    </ng-container>
+</div>
+<div class="title">
+    <h1>To See The Booked Appointment List of Ever Doctors Click the Below Button</h1>
+  </div>
+<div class="buttons">
+    <button class="btn btn-primary button2" (click)="viewappointment()">View Appointemnt List</button>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>          
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Address</th>
+            <th scope="col">contact number</th>
+            <th scope="col">Doctor name</th>
+            <th scope="col">Specialization needed</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let b of applist">
+            <td>{{b.patientName}}</td>
+            <td>{{b.patientAge}}</td>
+            <td>{{b.patientGender}}</td>
+            <td>{{b.patientAddress}}</td>
+            <td>{{b.patientNumber}}</td>
+            <td>{{b.doctorName}}</td>
+            <td>{{b.specializationPatientNeed}}</td>
+            <td>{{b.visitingDate}}</td>
+            <td>{{b.appoitmentTime}}</td>
+        </tr>
+    </tbody>
+</table>

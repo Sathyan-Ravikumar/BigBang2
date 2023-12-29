@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Office:wght@300&display=swap');
+*{
+    font-family:'Ysabeau' ;
+}
+
+img{
+    height: 300px;
+    width: 250px;
+    /* margin-left: 130px; */
+}
+.content1{
+    align-items: center;
+    align-content: center;
+    margin-top: 100px;
+    font-size: 20px;
+    
+}
+.table{
+    margin-bottom: 100px;
+}
+.title{
+    margin-top: 50px;
+    text-align:center;
+    color:#138496;
+}
+
+span{
+    font-weight: 600;
+}
+
+.buttons{
+    margin-left: 45%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.button1{
+    margin-right: 30px;
+    background-color: #138496;
+    border: none;
+}
+.button2{
+    background-color: #138496;
+    border: none;
+}
+
+.cardbutton1,.cardbutton2{
+    background-color: #138496;
+    color: white;
+    margin-right: 10px;
+}

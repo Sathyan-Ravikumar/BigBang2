@@ -1,0 +1,40 @@
+
+<div class="title">
+    <h1>Docters We have at Different Specialization</h1>
+</div>
+
+<div class="row bg">
+    <ng-container *ngFor="let d of doctor">
+            <div class="col-lg-6 mb-4" style="width: 25rem;">
+                <div class="card content1">
+                    <img class="card-img-top" src="../../assets/{{d.doctorName}}.jpg" alt="Card image">
+                        <div class="card-body" style="line-height:20px;">
+                          <p class="card-text"><span>ID of the Doctor : </span>{{d.doctorid}}</p>
+                        <p class="card-text"><span>Name of the Doctor : </span>{{d.doctorName}}</p>
+                        <p class="card-text"><span>Specialization : </span>{{d.specialization}}</p>
+                        <p class="card-text"><span>Number of Years Experienced : </span>{{d.experience}}</p>
+                        <p class="card-text"><span>Gender : </span>{{d.gender}}</p>
+                        <p class="card-text"><span>Email ID : </span>{{d.email}}</p>
+                        </div>
+                </div>
+            </div>
+        </ng-container>
+</div>
+<!-- <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <ng-container *ngFor="let d of doctor">
+      <div class="col-md-4">
+        <img src="../../assets/{{d.doctorName}}.jpg" class="img-fluid rounded-start" alt="{{d.doctorName}} Image">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Doctor Details</h5>
+          <p class="card-text">Name of the Doctor :{{d.doctorName}}</p>
+          <p class="card-text">Specialization :{{d.specialization}}</p>
+          <p class="card-text">Number of Years Experienced :{{d.experience}}</p>
+          <p class="card-text">Email ID :{{d.email}}</p>
+        </div>
+      </div>
+      </ng-container>
+    </div>
+  </div> -->

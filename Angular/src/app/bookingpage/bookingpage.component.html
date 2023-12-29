@@ -1,0 +1,90 @@
+<div class="inner-layer">
+  <div class="container">
+    <div class="row no-margin">
+      <div class="col-sm-7">
+        <div class="content">
+          <h1>Book Your Slot Now and Save Your Time</h1>
+          <p>We are here to help you take care of your health. Book your Doctor and Live a Healthy life.</p>
+          <h2>For Help Call: +91 6369247198</h2>
+        </div>
+      </div>
+      <div class="col-sm-5 full-form">
+        <div class="form-data">
+          <div class="form-head">
+            <h2>Book Appointment</h2>
+          </div>
+          <div class="form-body">
+            <form [formGroup]="bookingForm">
+              <div class="row form-row">
+                <input type="text" placeholder="Enter Your Name" class="form-control" formControlName="patientName" required>
+                <div *ngIf="isFieldInvalid('patientName')" class="text-danger">
+                  Please enter a valid full name
+                </div>
+              </div>
+              <div class="row form-row">
+                <input type="text" placeholder="Enter Your Age" class="form-control" formControlName="patientAge" required>
+                <div *ngIf="isFieldInvalid('patientAge')" class="text-danger">
+                  Please enter a valid age 
+                </div>
+              </div>
+              <div class="row form-row">
+                <input type="text" placeholder="Enter Your Gender" class="form-control" formControlName="patientGender" required>
+                <div *ngIf="isFieldInvalid('patientGender')" class="text-danger">
+                  Please enter a valid gender
+                </div>
+              </div>
+              <div class="row form-row">
+                <input type="text" placeholder="Enter Your current Address" class="form-control" formControlName="patientAddress" required>
+                <div *ngIf="isFieldInvalid('patientAddress')" class="text-danger">
+                  Please enter Your address
+                </div>
+              </div>
+              <div class="row form-row">
+                <input type="text" placeholder="Enter Mobile Number" class="form-control" formControlName="patientNumber" required>
+                <div *ngIf="isFieldInvalid('patientNumber')" class="text-danger">
+                  Please enter a valid mobile number (starting with 6, 7, 8, or 9)
+                </div>
+              </div>
+              <h2 class="appde">Appointment Details</h2>
+              <div class="row form-row">
+                <input type="text" placeholder="Doctor ID" class="form-control" formControlName="doctorid" required>
+                <div *ngIf="isFieldInvalid('doctorid')" class="text-danger">
+                  Please enter a valid DOCTOR ID
+                </div>
+              </div>
+              <div class="row form-row">
+                <input type="text" placeholder="Specialization" class="form-control" formControlName="specializationPatientNeed" required>
+                <div *ngIf="isFieldInvalid('specializationPatientNeed')" class="text-danger">
+                  Please enter a valid specialization
+                </div>
+              </div>
+              <div class="row form-row">
+                <input id="dat" type="date" placeholder="Appointment Date" class="form-control" formControlName="visitingDate" required>
+                <div *ngIf="isFieldInvalid('visitingDate')" class="text-danger">
+                  Please enter a valid appointment date within 10 days.
+                </div>
+              </div>
+              <div class="row form-row">
+                <input type="time" placeholder="Time" class="form-control" formControlName="appoitmentTime" required>
+                <div *ngIf="isFieldInvalid('appoitmentTime')" class="text-danger">
+                 Please enter the time between morning 10 am to evening 4 pm.
+                </div>
+              </div>
+              <div class="row form-row">
+                <button class="btn btn-success btn-appointment" [disabled]="bookingForm.invalid" (click)="bookAppointment()">
+                  <span>Book Appointment</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-box1" id="popup1">
+  <i class="fa-solid fa-xmark fa-lg" (click)="closePopup()"></i>
+  <h2>Thank You</h2>
+  <p>Your Appointment is Booked</p>
+</div>

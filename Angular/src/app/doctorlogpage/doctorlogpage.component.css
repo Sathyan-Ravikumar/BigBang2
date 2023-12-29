@@ -1,0 +1,215 @@
+.navigations{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.title{
+  
+    margin-top: 200px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 70px;
+    margin-left: 40%;
+}
+
+
+.navigations h4:hover{
+    transform: scale(1.1);
+    transition: all linear 1s;
+}
+
+
+.dialog-box {
+    margin-top: 100px;
+    margin-left: 50%;
+    width: 400px;
+    background-color: #fffffff2;
+    border-radius: 8px;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #003329;
+    box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+    z-index: 100;
+  }
+
+  
+.dialog-box1 {
+  margin-top: -800px;
+  margin-left: 50%;
+  width: 400px;
+  background-color: #fffffff2;
+  border-radius: 8px;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #003329;
+  box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+  z-index: 100;
+}
+.tag{
+  color: rgb(19, 132, 124);
+  margin-top: 50px;
+  text-align: center;
+}
+
+.dialog-box2 {
+  margin-top: -2000px;
+  margin-left: 50%;
+  width: 400px;
+  background-color: #fffffff2;
+  border-radius: 8px;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #003329;
+  box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+  z-index: 100;
+}
+
+  .open {
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .dialog-box i {
+    padding-top: 20px;
+    float: right;
+  }
+  .dialog-box h2 {
+    padding-top: 20px;
+    color: #003329;
+  }
+  .dialog-box label {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 30px 0 10px;
+    float: left;
+  }
+  
+
+  .dialog-box1 i {
+    padding-top: 20px;
+    float: right;
+  }
+  .dialog-box1 h2 {
+    padding-top: 20px;
+    color: #003329;
+  }
+  .dialog-box1 label {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 30px 0 10px;
+    float: left;
+  }
+
+
+  .dialog-box2 i {
+    padding-top: 20px;
+    float: right;
+  }
+  .dialog-box2 h2 {
+    padding-top: 20px;
+    color: #000000;
+  }
+  .dialog-box2 label {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 30px 0 10px;
+    float: left;
+  }
+
+
+
+  /* Form input fields */
+  input[type="text"],
+  input[type="name"],
+  input[type="number"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Form submit button */
+  input[type="submit"] {
+    background-color: #0e483c;
+    color: white;
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* Form submit button hover effect */
+  input[type="submit"]:hover {
+    background-color: #0b5452;
+  }
+  input{
+    border-radius: 5px;
+    border-color: #000000;
+  }
+  input::placeholder{
+    color: #138496;
+  }
+  /* Form wrapper styles */
+  .form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.buttons{
+  margin-left: 40%;
+}
+ button{
+  margin: 5px;
+  border:none;
+  border-radius: 5px;
+  background-color:#138496;
+  padding: 10px;
+  color: white;
+}
+.nextpage{
+  text-decoration: none;
+  color: white;
+  margin-left: 40%;
+  padding: 15px;
+  background-color: rgba(150, 1, 1, 0.747);
+  border-radius: 5px;
+}
+
+.wholecard{
+  margin-top: 100px;
+  align-items: center;
+  margin-left: 500px;
+}
+@media only screen and (max-width: 1068px){
+  .wholecard{
+    margin-left: 300px;
+  }
+}
+@media only screen and (max-width: 800px){
+  .wholecard{
+    margin-left: 100px;
+  }
+}
+@media only screen and (max-width: 600px){
+  .wholecard{
+    margin-left: 150px;
+  }
+}
+@media only screen and (max-width: 300px){
+  .wholecard{
+    margin-left: 200px;
+  }
+}

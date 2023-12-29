@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Office:wght@300&display=swap');
+*{
+    
+    font-family:'Ysabeau' ;
+}
+.title{
+    margin-top: 50px;
+    text-align:center;
+    color:#138496;
+
+}
+.content1{
+    margin-top: 50px;
+    font-size: 20px;
+}
+span{
+    font-weight: 600;
+}

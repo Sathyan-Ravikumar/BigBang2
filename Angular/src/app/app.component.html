@@ -1,0 +1,31 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel
+=" stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigins>
+<link href="https://fonts.googleapis.com/css2?family=Poppins: wght@500;6008
+display=swap" rel="stylesheet">
+</head>
+
+    <header>
+    <a [routerLink]="" class="logo"><img src="../../assets/logo-doc.png" height="50px"><span>Hospital</span></a>
+       <ul class="navbar">
+           <li><a [routerLink]="['home']" class="active">Home</a></li>
+           <li *ngIf="role == 'admin'"><a [routerLink]="['adminpage']" >Admin</a></li>
+           <li *ngIf="role == 'doctor'"><a [routerLink]="['docpage']">Doctor</a></li>
+           <li><a [routerLink]="['DocDe']">Doctor Details</a></li>
+           <li *ngIf="role == 'user'"><a [routerLink]="['book']">Book</a></li>
+       </ul>
+       
+       <div class="main">
+        <a *ngIf="role == ''" [routerLink]="['login']" class="user">Login</a>
+          <a *ngIf="role != ''" (click)="logOutPage()">Logout</a>
+         <div class="bx bx-menu" id="menu-icon"></div>
+       </div>
+    </header><br><br><br> &nbsp; &nbsp;
+
+    
+ 
+<router-outlet></router-outlet>
+<app-footer></app-footer>
